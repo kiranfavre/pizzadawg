@@ -1,0 +1,27 @@
+---
+title: "aeds221-day5-p2examples"
+author: "Kiran Favre"
+date: "2022-08-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+
+```{r}
+penguins_year_chr <- penguins |> 
+  mutate(year = as.character(year))
+
+penguins_year_num <- penguins_year_chr |> 
+  mutate(year = as.numeric(year))
+
+#we want to only include a certain spp in our df
+# %in% operator looks at each row: does the value of that variable (species) exist within this vector? if it does, keep it. If it doesnt, toss it. 
+penguins_ad_ch <- penguins_year_num |> 
+  filter(species %in% c("Adelie", "Chinstrap"))
+```
+
